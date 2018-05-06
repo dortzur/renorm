@@ -1,7 +1,8 @@
 {
   "name": "denormalize-selector",
   "version": "0.1.0",
-  "description": "A selector for using normalizr's \"denormalize\" method without triggering React avoidable re-renders.",
+  "description":
+    "A selector for using normalizr's \"denormalize\" method without triggering React's avoidable re-renders.",
   "main": "index.js",
   "scripts": {
     "test": "jest"
@@ -16,5 +17,10 @@
     "normalize"
   ],
   "author": "Dor Tzur",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {},
+  "peerDependencies": {
+    "normalizr": "^3.2.4",
+    "reselect": "^3.0.1"
+  }
 }
