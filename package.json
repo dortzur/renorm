@@ -1,0 +1,20 @@
+{
+  "name": "denormalize-selector",
+  "version": "0.1.0",
+  "description": "A selector for using normalizr's \"denormalize\" method without triggering React avoidable re-renders.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "normalizr",
+    "reselect",
+    "react",
+    "redux",
+    "selector",
+    "denormalize",
+    "normalize"
+  ],
+  "author": "Dor Tzur",
+  "license": "MIT"
+}
