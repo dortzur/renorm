@@ -26,6 +26,7 @@ module.exports = options => {
     performance: {
       hints: false
     },
+    externals: ["reselect","normalizr"],
     // Since we are wrapping our own webpack config, we need to properly resolve
     // Backpack's and the given user's node_modules without conflict.
     resolve: {

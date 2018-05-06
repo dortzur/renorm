@@ -1,8 +1,7 @@
 {
   "name": "denormalize-selector",
-  "version": "0.1.0",
-  "description":
-    "A selector for using normalizr's \"denormalize\" method without triggering React's avoidable re-renders.",
+  "version": "0.2.0",
+  "description": "A selector for using normalizr's \"denormalize\" method without triggering React's avoidable re-renders.",
   "main": "lib/index.js",
   "scripts": {
     "build": "webpack",
@@ -10,13 +9,19 @@
     "format:check": "prettier --list-different \"{src,test}/**/*.js\"",
     "lint": "eslint src test build",
     "pretest": "npm run build",
-    "prepare": "npm run clean && npm run format:check && npm test && npm run build",
+    "prepare": "npm run clean &&  npm test && npm run build",
     "test": "cross-env BABEL_ENV=commonjs jest",
     "test:watch": "npm test -- --watch",
     "test:cov": "npm test -- --coverage",
     "clean": "rimraf lib dist es coverage"
   },
-  "files": ["dist", "lib", "es", "src", "index.d.ts"],
+  "files": [
+    "dist",
+    "lib",
+    "es",
+    "src",
+    "index.d.ts"
+  ],
   "keywords": [
     "normalizr",
     "reselect",
@@ -29,7 +34,7 @@
   "repository": "dortzur/denormalize-selector",
   "author": "Dor Tzur",
   "license": "MIT",
-  "dependencies": {
+  "peerDependencies": {
     "normalizr": "^3.2.4",
     "reselect": "^3.0.1"
   },
@@ -49,5 +54,9 @@
   "jest": {
     "testRegex": "(.spec.js)$"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "dependencies": {
+    "normalizr": "^3.2.4",
+    "reselect": "^3.0.1"
+  }
 }
