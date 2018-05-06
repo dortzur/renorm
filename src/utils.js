@@ -17,7 +17,7 @@ export function areArgumentsShallowlyEqual(equalityCheck, prev, next) {
   return true;
 }
 
-export const toEntity = arr =>
+export const toEntity = (arr) =>
   arr.reduce((entityMap, item) => {
     entityMap[item.id] = item;
     return entityMap;
@@ -25,5 +25,5 @@ export const toEntity = arr =>
 
 export const getEntity = (id, schema, entities) => ({
   entity: entities[schema.key][id],
-  schema
+  schema,
 });

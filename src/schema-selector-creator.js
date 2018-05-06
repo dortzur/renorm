@@ -1,10 +1,10 @@
-import { createSelectorCreator } from "reselect";
+import { createSelectorCreator } from 'reselect';
 import {
   areArgumentsShallowlyEqual,
   equalityCheck,
   getEntity,
-  toEntity
-} from "./utils";
+  toEntity,
+} from './utils';
 
 const getAffectedEntities = (id, schema, entities, affectedEntities = []) => {
   if (Array.isArray(schema)) {
@@ -12,7 +12,7 @@ const getAffectedEntities = (id, schema, entities, affectedEntities = []) => {
   } else {
     id = [id];
   }
-  id.forEach(id => {
+  id.forEach((id) => {
     const entity = getEntity(id, schema, entities);
     affectedEntities.push(entity);
     Object.entries(schema.schema).forEach(([childKey, childSchema]) => {
@@ -45,7 +45,7 @@ function entityMemoize(func, schema) {
       const [input, entities] = arguments;
       //do magic
       if (lastResult) {
-        lastResult = input.map(id => {
+        lastResult = input.map((id) => {
           const affected = getAffectedEntities(id, rootSchema, entities);
           const didChange = affected.reduce((didChange, entityObj) => {
             if (didChange) return didChange;
@@ -72,5 +72,5 @@ function entityMemoize(func, schema) {
   };
 }
 
-export const schemaSelectorCreator = schema =>
+export const schemaSelectorCreator = (schema) =>
   createSelectorCreator(entityMemoize, schema);

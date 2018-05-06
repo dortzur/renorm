@@ -3,10 +3,20 @@
   "version": "0.1.0",
   "description":
     "A selector for using normalizr's \"denormalize\" method without triggering React's avoidable re-renders.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "jest"
+    "build": "webpack",
+    "format": "prettier --write \"{src,test}/**/*.js\"",
+    "format:check": "prettier --list-different \"{src,test}/**/*.js\"",
+    "lint": "eslint src test build",
+    "pretest": "npm run build",
+    "prepare": "npm run clean && npm run format:check && npm test && npm run build",
+    "test": "cross-env BABEL_ENV=commonjs jest",
+    "test:watch": "npm test -- --watch",
+    "test:cov": "npm test -- --coverage",
+    "clean": "rimraf lib dist es coverage"
   },
+  "files": ["dist", "lib", "es", "src", "index.d.ts"],
   "keywords": [
     "normalizr",
     "reselect",
@@ -16,11 +26,28 @@
     "denormalize",
     "normalize"
   ],
+  "repository": "dortzur/denormalize-selector",
   "author": "Dor Tzur",
   "license": "MIT",
-  "dependencies": {},
-  "peerDependencies": {
+  "dependencies": {
     "normalizr": "^3.2.4",
     "reselect": "^3.0.1"
-  }
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^22.4.3",
+    "babel-loader": "^7.1.0",
+    "babel-preset-backpack": "^0.7.0",
+    "cross-env": "^5.1.4",
+    "jest": "^22.4.3",
+    "json-loader": "^0.5.7",
+    "prettier": "^1.12.1",
+    "rimraf": "^2.6.2",
+    "webpack": "^3.11.0"
+  },
+  "bugs": "https://github.com/dortzur/denormalize-selector/issues",
+  "jest": {
+    "testRegex": "(.spec.js)$"
+  },
+  "sideEffects": false
 }
