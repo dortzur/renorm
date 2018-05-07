@@ -1,5 +1,6 @@
 # Denormalize Selector
-Denormalize Selector is a state selector optimised for avoiding React avoidable re-renders with Redux, Reselect and Normalizr using an optimisied selector.
+A state selector optimized for avoiding React avoidable re-renders with Redux, Reselect and Normalizr.
+
 
 An avoidable re-render happens when a React component receives 
 a shallow copy of one of it's properties, however the object didn't "really" change.
