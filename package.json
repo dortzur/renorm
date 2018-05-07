@@ -1,7 +1,8 @@
 {
   "name": "denormalize-selector",
   "version": "0.2.0",
-  "description": "A selector for using normalizr's \"denormalize\" method without triggering React's avoidable re-renders.",
+  "description":
+    "Avoid React avoidable re-renders with Redux, Reselect and Normalizr using an optimisied selector.",
   "main": "lib/index.js",
   "scripts": {
     "build": "webpack",
@@ -15,13 +16,7 @@
     "test:cov": "npm test -- --coverage",
     "clean": "rimraf lib dist es coverage"
   },
-  "files": [
-    "dist",
-    "lib",
-    "es",
-    "src",
-    "index.d.ts"
-  ],
+  "files": ["dist", "lib", "es", "src", "index.d.ts"],
   "keywords": [
     "normalizr",
     "reselect",
