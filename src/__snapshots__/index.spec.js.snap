@@ -1,0 +1,184 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`create-denormalize-select does stuff 1`] = `
+Object {
+  "companyName": "American Airlines Group, Inc.",
+  "financialStatus": "N",
+  "id": "COMP_AAL",
+  "marketCategory": "Q",
+  "roundLotSize": 100,
+  "securityName": "American Airlines Group, Inc. - Common Stock",
+  "stock": Object {
+    "change": -0.1,
+    "field4": "",
+    "id": "AAL",
+    "lastEarningsReport": Object {
+      "earnings": 64572,
+      "quarter": 4,
+      "reportId": "AAL_QUARTER_4",
+    },
+    "name": "American Airlines Group Inc",
+    "percentChange": "-0.21%",
+    "price": 46.78,
+    "quarterEarnings": Array [
+      Object {
+        "earnings": 74239,
+        "quarter": 1,
+        "reportId": "AAL_QUARTER_1",
+      },
+      Object {
+        "earnings": 88368,
+        "quarter": 2,
+        "reportId": "AAL_QUARTER_2",
+      },
+      Object {
+        "earnings": 79974,
+        "quarter": 3,
+        "reportId": "AAL_QUARTER_3",
+      },
+      Object {
+        "earnings": 64572,
+        "quarter": 4,
+        "reportId": "AAL_QUARTER_4",
+      },
+    ],
+  },
+  "testIssue": "N",
+}
+`;
+
+exports[`create-denormalize-select does stuff 2`] = `
+Object {
+  "companyName": "Adobe Systems Incorporated",
+  "financialStatus": "N",
+  "id": "COMP_ADBE",
+  "marketCategory": "Q",
+  "roundLotSize": 100,
+  "securityName": "Adobe Systems Incorporated - Common Stock",
+  "stock": Object {
+    "change": -2.38,
+    "field4": "",
+    "id": "ADBE",
+    "lastEarningsReport": Object {
+      "earnings": 61579,
+      "quarter": 3,
+      "reportId": "ADBE_QUARTER_3",
+    },
+    "name": "Adobe Systems Inc",
+    "percentChange": "-1.05%",
+    "price": 225.24,
+    "quarterEarnings": Array [
+      Object {
+        "earnings": 64269,
+        "quarter": 1,
+        "reportId": "ADBE_QUARTER_1",
+      },
+      Object {
+        "earnings": 65221,
+        "quarter": 2,
+        "reportId": "ADBE_QUARTER_2",
+      },
+      Object {
+        "earnings": 61579,
+        "quarter": 3,
+        "reportId": "ADBE_QUARTER_3",
+      },
+    ],
+  },
+  "testIssue": "N",
+}
+`;
+
+exports[`create-denormalize-select does stuff 3`] = `
+Object {
+  "companyName": "Biogen Idec Inc.",
+  "financialStatus": "N",
+  "id": "COMP_BIIB",
+  "marketCategory": "Q",
+  "roundLotSize": 100,
+  "securityName": "Biogen Idec Inc. - Common Stock",
+  "stock": Object {
+    "change": -3,
+    "field4": "",
+    "id": "BIIB",
+    "lastEarningsReport": Object {
+      "earnings": 74375,
+      "quarter": 4,
+      "reportId": "BIIB_QUARTER_4",
+    },
+    "name": "Biogen Inc",
+    "percentChange": "-1.13%",
+    "price": 263.02,
+    "quarterEarnings": Array [
+      Object {
+        "earnings": 86549,
+        "quarter": 1,
+        "reportId": "BIIB_QUARTER_1",
+      },
+      Object {
+        "earnings": 93205,
+        "quarter": 2,
+        "reportId": "BIIB_QUARTER_2",
+      },
+      Object {
+        "earnings": 95189,
+        "quarter": 3,
+        "reportId": "BIIB_QUARTER_3",
+      },
+      Object {
+        "earnings": 74375,
+        "quarter": 4,
+        "reportId": "BIIB_QUARTER_4",
+      },
+    ],
+  },
+  "testIssue": "N",
+}
+`;
+
+exports[`create-denormalize-select does stuff 4`] = `
+Object {
+  "companyName": "Discovery Communications, Inc.",
+  "financialStatus": "N",
+  "id": "COMP_DISCK",
+  "marketCategory": "Q",
+  "roundLotSize": 100,
+  "securityName": "Discovery Communications, Inc. - Series C Common Stock",
+  "stock": Object {
+    "change": -0.17,
+    "field4": "",
+    "id": "DISCK",
+    "lastEarningsReport": Object {
+      "earnings": 96306,
+      "quarter": 4,
+      "reportId": "DISCK_QUARTER_4",
+    },
+    "name": "Discovery Inc",
+    "percentChange": "-0.79%",
+    "price": 21.46,
+    "quarterEarnings": Array [
+      Object {
+        "earnings": 78343,
+        "quarter": 1,
+        "reportId": "DISCK_QUARTER_1",
+      },
+      Object {
+        "earnings": 72267,
+        "quarter": 2,
+        "reportId": "DISCK_QUARTER_2",
+      },
+      Object {
+        "earnings": 80546,
+        "quarter": 3,
+        "reportId": "DISCK_QUARTER_3",
+      },
+      Object {
+        "earnings": 96306,
+        "quarter": 4,
+        "reportId": "DISCK_QUARTER_4",
+      },
+    ],
+  },
+  "testIssue": "N",
+}
+`;
