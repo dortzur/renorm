@@ -13,8 +13,7 @@
     "test": "cross-env BABEL_ENV=commonjs jest",
     "test:watch": "npm test -- --watch",
     "test:cov": "npm test -- --coverage",
-    "test:coveralls":"jest --coverage --ci --coverageReporters=text-lcov | coveralls",
-    "test:junit":"yarn jest --ci --testResultsProcessor=jest-junit",
+    "test:ci":"jest --coverage --ci --testResultsProcessor=jest-junit --coverageReporters=text-lcov | coveralls",
     "clean": "rimraf lib dist es coverage"
   },
   "files": [

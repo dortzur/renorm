@@ -35,8 +35,7 @@ jobs:
 
       - run:
           name: Jest Suite
-          command: npm run test:junit
-          command: npm run test:coveralls
+          command: npm run test:ci
           environment:
             JEST_JUNIT_OUTPUT: "test-results/jest/results.xml"
 
