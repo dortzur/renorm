@@ -35,7 +35,8 @@ jobs:
 
       - run:
           name: Jest Suite
-          command: yarn jest --ci --testResultsProcessor="jest-junit"
+          command: npm run test:junit
+          command: npm run test:coveralls
           environment:
             JEST_JUNIT_OUTPUT: "test-results/jest/results.xml"
 

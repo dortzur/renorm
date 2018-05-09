@@ -13,6 +13,8 @@
     "test": "cross-env BABEL_ENV=commonjs jest",
     "test:watch": "npm test -- --watch",
     "test:cov": "npm test -- --coverage",
+    "test:coveralls":"jest --coverage --ci --coverageReporters=text-lcov | coveralls",
+    "test:junit":"yarn jest --ci --testResultsProcessor=jest-junit",
     "clean": "rimraf lib dist es coverage"
   },
   "files": [
@@ -43,12 +45,13 @@
     "babel-jest": "^22.4.3",
     "babel-loader": "^7.1.0",
     "babel-preset-backpack": "^0.7.0",
+    "coveralls": "^3.0.1",
     "cross-env": "^5.1.4",
     "jest": "^22.4.3",
+    "jest-junit": "^3.7.0",
     "json-loader": "^0.5.7",
     "prettier": "^1.12.1",
     "rimraf": "^2.6.2",
-    "jest-junit": "^3.7.0",
     "webpack": "^3.11.0"
   },
   "bugs": "https://github.com/dortzur/denormalize-selector/issues",
