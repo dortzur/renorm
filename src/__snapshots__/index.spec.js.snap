@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`create-denormalize-select does stuff 1`] = `
+exports[`create-denormalize-select denormalizes entities 1`] = `
 Object {
   "companyName": "American Airlines Group, Inc.",
   "financialStatus": "N",
@@ -47,7 +47,7 @@ Object {
 }
 `;
 
-exports[`create-denormalize-select does stuff 2`] = `
+exports[`create-denormalize-select denormalizes entities 2`] = `
 Object {
   "companyName": "Adobe Systems Incorporated",
   "financialStatus": "N",
@@ -89,7 +89,7 @@ Object {
 }
 `;
 
-exports[`create-denormalize-select does stuff 3`] = `
+exports[`create-denormalize-select denormalizes entities 3`] = `
 Object {
   "companyName": "Biogen Idec Inc.",
   "financialStatus": "N",
@@ -136,7 +136,7 @@ Object {
 }
 `;
 
-exports[`create-denormalize-select does stuff 4`] = `
+exports[`create-denormalize-select denormalizes entities 4`] = `
 Object {
   "companyName": "Discovery Communications, Inc.",
   "financialStatus": "N",

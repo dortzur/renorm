@@ -1,20 +1,30 @@
-export function equalityCheck(a, b) {
+export const equalityCheck = (a, b) => {
   return a === b;
-}
+};
+
+export const areEntitiesEqual = (prevEntities, nextEntities) => {
+  for (const key in nextEntities) {
+    if (
+      nextEntities.hasOwnProperty(key) &&
+      prevEntities[key] !== nextEntities[key]
+    ) {
+      return false;
+    }
+  }
+  return true;
+};
+
 export function areArgumentsShallowlyEqual(equalityCheck, prev, next) {
   if (prev === null || next === null || prev.length !== next.length) {
     return false;
   }
-
-  // Do this in a for loop (and not a `forEach` or an `every`) so we can determine equality as fast as possible.
-  const length = prev.length;
-  for (let i = 0; i < length; i++) {
-    if (!equalityCheck(prev[i], next[i])) {
-      return false;
-    }
+  const [prevInput, prevEntities] = prev;
+  const [nextInput, nextEntities] = next;
+  if (!equalityCheck(prevInput, nextInput)) {
+    return false;
   }
 
-  return true;
+  return areEntitiesEqual(prevEntities, nextEntities);
 }
 
 export const toEntity = (arr) =>
