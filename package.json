@@ -1,6 +1,6 @@
 {
   "name": "denormalize-selector",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Avoid React avoidable re-renders with Redux, Reselect and Normalizr using an optimisied selector.",
   "main": "lib/index.js",
   "scripts": {
