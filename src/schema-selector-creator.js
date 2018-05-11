@@ -9,7 +9,7 @@ import {
 /**
  *
  * @param id {any}
- * @param schema {Schema}
+ * @param schema {schema.Entity}
  * @param entities {Object}
  * @param affectedEntities {Array}
  * @return {Array}
@@ -39,7 +39,7 @@ const getAffectedEntities = (id, schema, entities, affectedEntities = []) => {
 /**
  *
  * @param func
- * @param schema {Schema}
+ * @param schema {schema.Entity}
  * @return {function}
  */
 function entityMemoize(func, schema) {
@@ -89,8 +89,8 @@ function entityMemoize(func, schema) {
 
 /**
  *
- * @param schema {Schema}
- * @return {func}
+ * @param schema {schema.Entity}
+ * @return {function}
  */
 export const schemaSelectorCreator = (schema) =>
   createSelectorCreator(entityMemoize, schema);

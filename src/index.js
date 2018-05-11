@@ -3,8 +3,8 @@ import { denormalize } from 'normalizr';
 
 /**
  *
- * @param getInput {func}
- * @param schema {Schema}
+ * @param getInput {function}
+ * @param schema {schema.Entity}
  * @param entityNames {...string}
  * @return {function}
  */

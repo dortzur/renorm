@@ -31,7 +31,6 @@ describe('utils', () => {
     expect(apple).toMatchSnapshot();
   });
   it('converts arrays to entity maps', () => {
-
     const entitiesArray = Object.entries(state.entities.stocks).map(
       ([id, entry]) => entry
     );
@@ -39,9 +38,13 @@ describe('utils', () => {
 
     expect(entities['AAPL'].name).toEqual('Apple Inc');
     expect(entities['AAPL']).toMatchSnapshot();
-
   });
-  it('checks entity maps equality',()=>{
-
-  })
+  it('checks entity maps equality', () => {
+    expect(areEntitiesEqual(state.entities, state.entities)).toBeTruthy();
+    expect(
+      areEntitiesEqual(state.entities, { ...state.entities })
+    ).toBeTruthy();
+    const newEntities = (state.entities.stocks = { ...state.entities.stocks });
+    expect(areEntitiesEqual(state.entities, newEntities)).toBeFalsy();
+  });
 });

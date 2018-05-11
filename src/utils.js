@@ -25,7 +25,7 @@ export const areEntitiesEqual = (prevEntities, nextEntities) => {
 
 /**
  *
- * @param equalityCheck {func}
+ * @param equalityCheck {function}
  * @param prev {array}
  * @param next {array}
  * @return {boolean}
@@ -55,9 +55,9 @@ export const toEntity = (entityArray) =>
   }, {});
 /**
  * @param id {*}
- * @param schema {Schema}
+ * @param schema {schema.Entity}
  * @param entities {Object}
- * @return {{entity: {}, schema: Schema}}
+ * @return {{entity: {}, schema: schema.Entity}}
  */
 export const getEntity = (id, schema, entities) => ({
   entity: entities[schema.key][id],
