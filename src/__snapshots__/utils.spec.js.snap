@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`utils gets an entity 1`] = `
+Object {
+  "entity": Object {
+    "companyName": "Apple Inc.",
+    "financialStatus": "N",
+    "id": "COMP_AAPL",
+    "marketCategory": "Q",
+    "roundLotSize": 100,
+    "securityName": "Apple Inc. - Common Stock",
+    "stock": "AAPL",
+    "testIssue": "N",
+  },
+  "schema": EntitySchema {
+    "_getId": [Function],
+    "_idAttribute": "id",
+    "_key": "companies",
+    "_mergeStrategy": [Function],
+    "_processStrategy": [Function],
+    "schema": Object {
+      "stock": EntitySchema {
+        "_getId": [Function],
+        "_idAttribute": "id",
+        "_key": "stocks",
+        "_mergeStrategy": [Function],
+        "_processStrategy": [Function],
+        "schema": Object {
+          "lastEarningsReport": EntitySchema {
+            "_getId": [Function],
+            "_idAttribute": "reportId",
+            "_key": "earnings",
+            "_mergeStrategy": [Function],
+            "_processStrategy": [Function],
+            "schema": Object {},
+          },
+          "quarterEarnings": Array [
+            EntitySchema {
+              "_getId": [Function],
+              "_idAttribute": "reportId",
+              "_key": "earnings",
+              "_mergeStrategy": [Function],
+              "_processStrategy": [Function],
+              "schema": Object {},
+            },
+          ],
+        },
+      },
+    },
+  },
+}
+`;
