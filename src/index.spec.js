@@ -8,7 +8,7 @@ const getStocks = (state) => state.stocks;
 
 let state = null;
 
-describe('create-denormalize-select', () => {
+describe('create-denormalize-selector', () => {
   beforeAll(() => {
     const { result: stocks, entities } = normalize(
       stockFixture,

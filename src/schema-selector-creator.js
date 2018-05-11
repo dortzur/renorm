@@ -8,7 +8,7 @@ import {
 
 /**
  *
- * @param id {any}
+ * @param id {*}
  * @param schema {schema.Entity}
  * @param entities {Object}
  * @param affectedEntities {Array}
