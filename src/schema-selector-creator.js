@@ -6,6 +6,14 @@ import {
   toEntity,
 } from './utils';
 
+/**
+ *
+ * @param id {any}
+ * @param schema {Schema}
+ * @param entities {Object}
+ * @param affectedEntities {Array}
+ * @return {Array}
+ */
 const getAffectedEntities = (id, schema, entities, affectedEntities = []) => {
   if (Array.isArray(schema)) {
     schema = schema[0];
@@ -28,6 +36,12 @@ const getAffectedEntities = (id, schema, entities, affectedEntities = []) => {
   return affectedEntities;
 };
 
+/**
+ *
+ * @param func
+ * @param schema {Schema}
+ * @return {function}
+ */
 function entityMemoize(func, schema) {
   let lastArgs = null;
   let lastEntities = null;
@@ -44,7 +58,7 @@ function entityMemoize(func, schema) {
       newResult = Array.isArray(rawResult) ? rawResult : [rawResult];
       const newResultCache = toEntity(newResult);
       const [input, entities] = arguments;
-      //do magic
+
       if (lastResult) {
         lastResult = input.map((id) => {
           const affected = getAffectedEntities(id, rootSchema, entities);
@@ -64,6 +78,7 @@ function entityMemoize(func, schema) {
       } else {
         lastResult = newResult;
       }
+
       lastResultCache = toEntity(lastResult);
       lastArgs = arguments;
       lastEntities = entities;
@@ -72,5 +87,10 @@ function entityMemoize(func, schema) {
   };
 }
 
+/**
+ *
+ * @param schema {Schema}
+ * @return {func}
+ */
 export const schemaSelectorCreator = (schema) =>
   createSelectorCreator(entityMemoize, schema);

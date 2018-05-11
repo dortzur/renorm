@@ -41,4 +41,7 @@ describe('utils', () => {
     expect(entities['AAPL']).toMatchSnapshot();
 
   });
+  it('checks entity maps equality',()=>{
+
+  })
 });

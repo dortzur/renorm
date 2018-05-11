@@ -1,6 +1,13 @@
 import { schemaSelectorCreator } from './schema-selector-creator';
 import { denormalize } from 'normalizr';
 
+/**
+ *
+ * @param getInput {func}
+ * @param schema {Schema}
+ * @param entityNames {...string}
+ * @return {function}
+ */
 export const createDenormalizeSelector = (getInput, schema, ...entityNames) => {
   const createEntitySelector = schemaSelectorCreator(schema);
   const getEntities = (state) =>
