@@ -29,6 +29,16 @@ describe('utils', () => {
     expect(apple.schema).toEqual(Schemas.COMPANY);
     expect(apple.entity.id).toEqual('COMP_AAPL');
     expect(apple).toMatchSnapshot();
+  });
+  it('converts arrays to entity maps', () => {
+
+    const entitiesArray = Object.entries(state.entities.stocks).map(
+      ([id, entry]) => entry
+    );
+    const entities = toEntity(entitiesArray);
+
+    expect(entities['AAPL'].name).toEqual('Apple Inc');
+    expect(entities['AAPL']).toMatchSnapshot();
 
   });
 });
