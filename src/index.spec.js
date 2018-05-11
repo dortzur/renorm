@@ -80,4 +80,17 @@ describe('create-denormalize-select', () => {
       changedStocks.filter((stock, index) => stock !== stocks[index])
     ).toHaveLength(1);
   });
+
+  it('denormalizes a single entity', () => {
+    const getAppleStock = createDenormalizeSelector(
+      () => 'AAPL',
+      Schemas.STOCK,
+      'stocks',
+      'earnings'
+    );
+    const appleStock = getAppleStock(state);
+    expect(appleStock).toMatchSnapshot();
+    getAppleStock({...state});
+    expect(getAppleStock.recomputations()).toEqual(1);
+  });
 });
