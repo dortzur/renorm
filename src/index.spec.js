@@ -20,10 +20,7 @@ describe('create-denormalize-selector', () => {
   it('denormalizes entities', () => {
     const getStocksSelector = createDenormalizeSelector(
       getStocks,
-      Schemas.COMPANY_ARRAY,
-      'companies',
-      'earnings',
-      'stocks'
+      Schemas.COMPANY_ARRAY
     );
     const initialStocks = getStocksSelector(state);
     expect(initialStocks[0]).toMatchSnapshot();
@@ -35,10 +32,7 @@ describe('create-denormalize-selector', () => {
   it('replaces only changed denormalized entities', () => {
     const getStocksSelector = createDenormalizeSelector(
       getStocks,
-      Schemas.COMPANY_ARRAY,
-      'companies',
-      'earnings',
-      'stocks'
+      Schemas.COMPANY_ARRAY
     );
     const initialStocks = getStocksSelector(state);
     const newState = produce(state, (draftState) => {
@@ -55,10 +49,7 @@ describe('create-denormalize-selector', () => {
   it('caches values correctly', () => {
     const getStocksSelector = createDenormalizeSelector(
       getStocks,
-      Schemas.COMPANY_ARRAY,
-      'companies',
-      'earnings',
-      'stocks'
+      Schemas.COMPANY_ARRAY
     );
     getStocksSelector(state);
     expect(getStocksSelector.recomputations()).toEqual(1);
@@ -84,13 +75,11 @@ describe('create-denormalize-selector', () => {
   it('denormalizes a single entity', () => {
     const getAppleStock = createDenormalizeSelector(
       () => 'AAPL',
-      Schemas.STOCK,
-      'stocks',
-      'earnings'
+      Schemas.STOCK
     );
     const appleStock = getAppleStock(state);
     expect(appleStock).toMatchSnapshot();
-    getAppleStock({...state});
+    getAppleStock({ ...state });
     expect(getAppleStock.recomputations()).toEqual(1);
   });
 });

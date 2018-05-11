@@ -26,8 +26,8 @@ export const areEntitiesEqual = (prevEntities, nextEntities) => {
 /**
  *
  * @param equalityCheck {function}
- * @param prev {array}
- * @param next {array}
+ * @param prev {array|IArguments}
+ * @param next {array|IArguments}
  * @return {boolean}
  */
 export function areArgumentsShallowlyEqual(equalityCheck, prev, next) {
@@ -63,3 +63,20 @@ export const getEntity = (id, schema, entities) => ({
   entity: entities[schema.key][id],
   schema,
 });
+
+export const uniqueFilter = (val, i, arr) => arr.indexOf(val) === i;
+
+export const getEntityNames = (schema, schemaEntities = []) => {
+  if (Array.isArray(schema)) {
+    schema = schema[0];
+  }
+  schemaEntities.push(schema.key);
+  Object.entries(schema.schema).forEach(([childKey, childSchema]) =>
+    getEntityNames(childSchema, schemaEntities)
+  );
+
+  return schemaEntities.filter(uniqueFilter);
+};
+
+export const dotProp = (path, obj) =>
+  path.split('.').reduce((prev, curr) => (prev ? prev[curr] : undefined), obj);
