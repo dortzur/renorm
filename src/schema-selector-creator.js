@@ -40,8 +40,8 @@ function entityMemoize(func, schema) {
   return function() {
     if (!areArgumentsShallowlyEqual(equalityCheck, lastArgs, arguments)) {
       // apply arguments instead of spreading for performance.
-      newResult = func.apply(null, arguments);
-      newResult = Array.isArray(newResult) ? newResult : [newResult];
+      const rawResult = func.apply(null, arguments);
+      newResult = Array.isArray(rawResult) ? rawResult : [rawResult];
       const newResultCache = toEntity(newResult);
       const [input, entities] = arguments;
       //do magic
@@ -68,8 +68,7 @@ function entityMemoize(func, schema) {
       lastArgs = arguments;
       lastEntities = entities;
     }
-
-    return lastResult;
+    return Array.isArray(schema) ? lastResult : lastResult[0];
   };
 }
 
