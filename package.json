@@ -1,5 +1,5 @@
 {
-  "name": "dlect",
+  "name": "renorm",
   "version": "0.3.2",
   "description": "Avoid React avoidable re-renders with Redux, Reselect and Normalizr using an optimisied selector.",
   "main": "lib/index.js",
@@ -32,7 +32,7 @@
     "denormalize",
     "normalize"
   ],
-  "repository": "dortzur/dlect",
+  "repository": "dortzur/renorm",
   "author": "Dor Tzur",
   "license": "MIT",
   "peerDependencies": {
@@ -54,7 +54,7 @@
     "rimraf": "^2.6.2",
     "webpack": "^3.11.0"
   },
-  "bugs": "https://github.com/dortzur/dlect/issues",
+  "bugs": "https://github.com/dortzur/renorm/issues",
   "jest": {
     "testRegex": "(.spec.js)$"
   },
