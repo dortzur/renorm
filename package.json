@@ -1,6 +1,6 @@
 {
   "name": "dlect",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Avoid React avoidable re-renders with Redux, Reselect and Normalizr using an optimisied selector.",
   "main": "lib/index.js",
   "scripts": {
