@@ -2,7 +2,7 @@ import { schemaSelectorCreator } from './schema-selector-creator';
 import { denormalize } from 'normalizr';
 import { dotProp, getEntityNames } from './utils';
 
-const defaultOptions = { entityReducerPath: 'entities' };
+const defaultOptions = { entitiesPath: 'entities' };
 
 /**
  *
@@ -16,7 +16,7 @@ const dlect = (inputSelector, schema, options = {}) => {
   const entityNames = getEntityNames(schema);
   options = Object.assign({}, defaultOptions, options);
   const getEntities = (state) =>
-    Object.entries(dotProp(options.entityReducerPath, state)).reduce(
+    Object.entries(dotProp(options.entitiesPath, state)).reduce(
       (acc, [key, val]) => {
         if (entityNames.includes(key)) {
           acc[key] = val;

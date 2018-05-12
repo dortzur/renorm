@@ -70,4 +70,8 @@ describe('dlect', () => {
     getAppleStock({ ...state });
     expect(getAppleStock.recomputations()).toEqual(1);
   });
+  // it('uses custom options',()=>{
+  //   const getStocksSelector = dlect(getStocks, Schemas.COMPANY_ARRAY,{});
+  //
+  // })
 });

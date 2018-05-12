@@ -4,6 +4,9 @@ import {
   toEntity,
   getEntity,
   areArgumentsShallowlyEqual,
+  uniqueFilter,
+  dotProp,
+  getEntityNames,
 } from './utils';
 import { normalize } from 'normalizr';
 import { Schemas } from '../fixtures/schema-fixture';
