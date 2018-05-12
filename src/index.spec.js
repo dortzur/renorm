@@ -66,9 +66,16 @@ describe('renorm', () => {
   it('denormalizes a single entity', () => {
     const getAppleStock = renorm(() => 'AAPL', Schemas.STOCK);
     const appleStock = getAppleStock(state);
+    getAppleStock(state);
     expect(appleStock).toMatchSnapshot();
     getAppleStock({ ...state });
     expect(getAppleStock.recomputations()).toEqual(1);
+
+    const newState = produce(state, (draftState) => {
+      draftState.entities.stocks['AAPL'].name = 'Apple';
+    });
+    getAppleStock(newState);
+    expect(getAppleStock.recomputations()).toEqual(2);
   });
   // it('uses custom options',()=>{
   //   const getStocksSelector = renorm(getStocks, Schemas.COMPANY_ARRAY,{});

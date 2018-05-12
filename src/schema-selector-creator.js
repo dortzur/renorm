@@ -57,8 +57,8 @@ function entityMemoize(func, schema) {
       const rawResult = func.apply(null, arguments);
       newResult = Array.isArray(rawResult) ? rawResult : [rawResult];
       const newResultCache = toEntity(newResult);
-      const [input, entities] = arguments;
-
+      const [rawInput, entities] = arguments;
+      const input = Array.isArray(rawInput) ? rawInput : [rawInput];
       if (lastResult) {
         lastResult = input.map((id) => {
           const affected = getAffectedEntities(id, rootSchema, entities);
