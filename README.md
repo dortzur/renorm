@@ -1,7 +1,7 @@
 # Denormalize Selector
 A state selector optimized for avoiding React avoidable re-renders with Redux, Reselect and Normalizr.
 
-[![CircleCI Status](https://circleci.com/gh/dortzur/denormalize-selector.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/dortzur/denormalize-selector) [![Coverage Status](https://img.shields.io/coveralls/dortzur/denormalize-selector.svg?style=flat)](https://coveralls.io/github/dortzur/denormalize-selector?branch=master) [![npm version](https://img.shields.io/npm/v/denormalize-selector.svg?style=flat-square)](https://www.npmjs.com/package/denormalize-selector) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/dortzur/denormalize-selector/blob/master/LICENSE)  
+[![CircleCI Status](https://circleci.com/gh/dortzur/dlect.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/dortzur/dlect) [![Coverage Status](https://img.shields.io/coveralls/dortzur/dlect.svg?style=flat)](https://coveralls.io/github/dortzur/dlect?branch=master) [![npm version](https://img.shields.io/npm/v/dlect.svg?style=flat-square)](https://www.npmjs.com/package/dlect) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/dortzur/dlect/blob/master/LICENSE)  
 
 
 An avoidable re-render happens when a React component receives 

@@ -1,4 +1,4 @@
-import { createDenormalizeSelector } from './';
+import dlect from './';
 import { normalize } from 'normalizr';
 import stockFixture from '../fixtures/stock-fixure';
 import { Schemas } from '../fixtures/schema-fixture';
@@ -8,7 +8,7 @@ const getStocks = (state) => state.stocks;
 
 let state = null;
 
-describe('create-denormalize-selector', () => {
+describe('dlect', () => {
   beforeAll(() => {
     const { result: stocks, entities } = normalize(
       stockFixture,
@@ -18,10 +18,7 @@ describe('create-denormalize-selector', () => {
   });
 
   it('denormalizes entities', () => {
-    const getStocksSelector = createDenormalizeSelector(
-      getStocks,
-      Schemas.COMPANY_ARRAY
-    );
+    const getStocksSelector = dlect(getStocks, Schemas.COMPANY_ARRAY);
     const initialStocks = getStocksSelector(state);
     expect(initialStocks[0]).toMatchSnapshot();
     expect(initialStocks[2]).toMatchSnapshot();
@@ -30,10 +27,7 @@ describe('create-denormalize-selector', () => {
   });
 
   it('replaces only changed denormalized entities', () => {
-    const getStocksSelector = createDenormalizeSelector(
-      getStocks,
-      Schemas.COMPANY_ARRAY
-    );
+    const getStocksSelector = dlect(getStocks, Schemas.COMPANY_ARRAY);
     const initialStocks = getStocksSelector(state);
     const newState = produce(state, (draftState) => {
       draftState.entities.earnings['AAPL_QUARTER_1'].earnings = 15;
@@ -47,10 +41,7 @@ describe('create-denormalize-selector', () => {
   });
 
   it('caches values correctly', () => {
-    const getStocksSelector = createDenormalizeSelector(
-      getStocks,
-      Schemas.COMPANY_ARRAY
-    );
+    const getStocksSelector = dlect(getStocks, Schemas.COMPANY_ARRAY);
     getStocksSelector(state);
     expect(getStocksSelector.recomputations()).toEqual(1);
     getStocksSelector(state);
@@ -73,10 +64,7 @@ describe('create-denormalize-selector', () => {
   });
 
   it('denormalizes a single entity', () => {
-    const getAppleStock = createDenormalizeSelector(
-      () => 'AAPL',
-      Schemas.STOCK
-    );
+    const getAppleStock = dlect(() => 'AAPL', Schemas.STOCK);
     const appleStock = getAppleStock(state);
     expect(appleStock).toMatchSnapshot();
     getAppleStock({ ...state });

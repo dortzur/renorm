@@ -1,5 +1,5 @@
 {
-  "name": "denormalize-selector",
+  "name": "dlect",
   "version": "0.3.1",
   "description": "Avoid React avoidable re-renders with Redux, Reselect and Normalizr using an optimisied selector.",
   "main": "lib/index.js",
@@ -32,7 +32,7 @@
     "denormalize",
     "normalize"
   ],
-  "repository": "dortzur/denormalize-selector",
+  "repository": "dortzur/dlect",
   "author": "Dor Tzur",
   "license": "MIT",
   "peerDependencies": {
@@ -54,7 +54,7 @@
     "rimraf": "^2.6.2",
     "webpack": "^3.11.0"
   },
-  "bugs": "https://github.com/dortzur/denormalize-selector/issues",
+  "bugs": "https://github.com/dortzur/dlect/issues",
   "jest": {
     "testRegex": "(.spec.js)$"
   },

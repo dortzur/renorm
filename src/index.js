@@ -6,12 +6,12 @@ const defaultOptions = { entityReducerPath: 'entities' };
 
 /**
  *
- * @param getInput {function}
+ * @param inputSelector {function}
  * @param schema {schema.Entity}
  * @param options {object}
  * @return {function}
  */
-export const createDenormalizeSelector = (getInput, schema, options = {}) => {
+const dlect = (inputSelector, schema, options = {}) => {
   const createEntitySelector = schemaSelectorCreator(schema);
   const entityNames = getEntityNames(schema);
   options = Object.assign({}, defaultOptions, options);
@@ -26,7 +26,8 @@ export const createDenormalizeSelector = (getInput, schema, options = {}) => {
       {}
     );
 
-  return createEntitySelector(getInput, getEntities, (input, entities) =>
+  return createEntitySelector(inputSelector, getEntities, (input, entities) =>
     denormalize(input, schema, entities)
   );
 };
+export default dlect;
