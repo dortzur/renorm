@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`dlect denormalizes a single entity 1`] = `
+exports[`renorm denormalizes a single entity 1`] = `
 Object {
   "change": -7.08,
   "field4": "",
@@ -33,7 +33,7 @@ Object {
 }
 `;
 
-exports[`dlect denormalizes entities 1`] = `
+exports[`renorm denormalizes entities 1`] = `
 Object {
   "companyName": "American Airlines Group, Inc.",
   "financialStatus": "N",
@@ -80,7 +80,7 @@ Object {
 }
 `;
 
-exports[`dlect denormalizes entities 2`] = `
+exports[`renorm denormalizes entities 2`] = `
 Object {
   "companyName": "Adobe Systems Incorporated",
   "financialStatus": "N",
@@ -122,7 +122,7 @@ Object {
 }
 `;
 
-exports[`dlect denormalizes entities 3`] = `
+exports[`renorm denormalizes entities 3`] = `
 Object {
   "companyName": "Biogen Idec Inc.",
   "financialStatus": "N",
@@ -169,7 +169,7 @@ Object {
 }
 `;
 
-exports[`dlect denormalizes entities 4`] = `
+exports[`renorm denormalizes entities 4`] = `
 Object {
   "companyName": "Discovery Communications, Inc.",
   "financialStatus": "N",

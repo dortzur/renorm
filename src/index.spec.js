@@ -1,4 +1,4 @@
-import dlect from './';
+import renorm from './';
 import { normalize } from 'normalizr';
 import stockFixture from '../fixtures/stock-fixure';
 import { Schemas } from '../fixtures/schema-fixture';
@@ -8,7 +8,7 @@ const getStocks = (state) => state.stocks;
 
 let state = null;
 
-describe('dlect', () => {
+describe('renorm', () => {
   beforeAll(() => {
     const { result: stocks, entities } = normalize(
       stockFixture,
@@ -18,7 +18,7 @@ describe('dlect', () => {
   });
 
   it('denormalizes entities', () => {
-    const getStocksSelector = dlect(getStocks, Schemas.COMPANY_ARRAY);
+    const getStocksSelector = renorm(getStocks, Schemas.COMPANY_ARRAY);
     const initialStocks = getStocksSelector(state);
     expect(initialStocks[0]).toMatchSnapshot();
     expect(initialStocks[2]).toMatchSnapshot();
@@ -27,7 +27,7 @@ describe('dlect', () => {
   });
 
   it('replaces only changed denormalized entities', () => {
-    const getStocksSelector = dlect(getStocks, Schemas.COMPANY_ARRAY);
+    const getStocksSelector = renorm(getStocks, Schemas.COMPANY_ARRAY);
     const initialStocks = getStocksSelector(state);
     const newState = produce(state, (draftState) => {
       draftState.entities.earnings['AAPL_QUARTER_1'].earnings = 15;
@@ -41,7 +41,7 @@ describe('dlect', () => {
   });
 
   it('caches values correctly', () => {
-    const getStocksSelector = dlect(getStocks, Schemas.COMPANY_ARRAY);
+    const getStocksSelector = renorm(getStocks, Schemas.COMPANY_ARRAY);
     getStocksSelector(state);
     expect(getStocksSelector.recomputations()).toEqual(1);
     getStocksSelector(state);
@@ -64,14 +64,14 @@ describe('dlect', () => {
   });
 
   it('denormalizes a single entity', () => {
-    const getAppleStock = dlect(() => 'AAPL', Schemas.STOCK);
+    const getAppleStock = renorm(() => 'AAPL', Schemas.STOCK);
     const appleStock = getAppleStock(state);
     expect(appleStock).toMatchSnapshot();
     getAppleStock({ ...state });
     expect(getAppleStock.recomputations()).toEqual(1);
   });
   // it('uses custom options',()=>{
-  //   const getStocksSelector = dlect(getStocks, Schemas.COMPANY_ARRAY,{});
+  //   const getStocksSelector = renorm(getStocks, Schemas.COMPANY_ARRAY,{});
   //
   // })
 });

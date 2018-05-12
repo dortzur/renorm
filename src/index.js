@@ -11,7 +11,7 @@ const defaultOptions = { entitiesPath: 'entities' };
  * @param options {object}
  * @return {function}
  */
-const dlect = (inputSelector, schema, options = {}) => {
+const renorm = (inputSelector, schema, options = {}) => {
   const createEntitySelector = schemaSelectorCreator(schema);
   const entityNames = getEntityNames(schema);
   options = Object.assign({}, defaultOptions, options);
@@ -30,4 +30,4 @@ const dlect = (inputSelector, schema, options = {}) => {
     denormalize(input, schema, entities)
   );
 };
-export default dlect;
+export default renorm;
