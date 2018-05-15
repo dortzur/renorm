@@ -2,13 +2,16 @@ import { schemaSelectorCreator } from './schema-selector-creator';
 import { denormalize } from 'normalizr';
 import { dotProp, getEntityNames } from './utils';
 
-const defaultOptions = { entitiesPath: 'entities' };
+const defaultOptions = {
+  entitiesPath: 'entities',
+  process: (results) => results,
+};
 
 /**
  *
  * @param inputSelector {function}
  * @param schema {schema.Entity}
- * @param options {object}
+ * @param options {{entitiesPath: string, process: function}}
  * @return {function}
  */
 const renorm = (inputSelector, schema, options = {}) => {
@@ -27,7 +30,7 @@ const renorm = (inputSelector, schema, options = {}) => {
     );
 
   return createEntitySelector(inputSelector, getEntities, (input, entities) =>
-    denormalize(input, schema, entities)
+    options.process(denormalize(input, schema, entities))
   );
 };
 export default renorm;
