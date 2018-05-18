@@ -31,10 +31,8 @@ npm install --save renorm
 ## Examples
 
 ### Basic Usage
-
-**schema.js**
-
 ```javascript
+// schema
 import { schema } from 'normalizr';
 const stockSchema = new schema.Entity('stocks');
 const companySchema = new schema.Entity('companies', {
@@ -46,11 +44,8 @@ export const Schemas = {
   COMPANY: companySchema,
   COMPANY_ARRAY: [companySchema],
 };
-```
 
-**state.js**
-
-```javascript
+// redux state example
 const state = {
   companyIds: ['COMP_A', 'COMP_B' /*...*/],
   entities: {
@@ -62,21 +57,16 @@ const state = {
     /*stock entities...*/
   },
 };
-```
-#### Using Renorm
-```javascript
-import { Schemas } from './schema';
-import renorm from 'renorm';
 
+
+// renorm selector 
+import renorm from 'renorm';
 const getCompanyIds = (state) => state.companyIds;
 const getCompanies = renorm(getCompanyIds, Schemas.COMPANY_ARRAY);
-```
-And here's the same selector without using renorm:
-```javascript
-import { Schemas } from './schema';
-import { denormalize } from 'normalizr';
-import { createSelector } from 'reselect';
 
+//and here's the same selector without renorm
+import {denormalize} from 'normalizr';
+import {createSelector} from 'reselect';
 const getCompanyIds = (state) => state.companyIds;
 const getCompanyEntities = (state) => state.entities.companies;
 const getStockEntities = (state) => state.entities.stocks;
