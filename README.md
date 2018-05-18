@@ -28,8 +28,8 @@ npm install --save renorm
 
 ## Dependencies
 
-* [Reselect]('https://github.com/reduxjs/reselect/')
-* [Normalizr]('https://github.com/paularmstrong/normalizr')
+* [Reselect](https://github.com/reduxjs/reselect/)
+* [Normalizr](https://github.com/paularmstrong/normalizr)
 
 ## License
 
