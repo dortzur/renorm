@@ -30,9 +30,9 @@ npm install --save renorm
 
 ## Examples
 
-### Example
+### Basic Usage
 
-**basic-schema.js**
+**schema.js**
 
 ```javascript
 import { schema } from 'normalizr';
@@ -48,7 +48,7 @@ export const Schemas = {
 };
 ```
 
-**basic-state.js**
+**state.js**
 
 ```javascript
 const state = {
@@ -63,7 +63,7 @@ const state = {
   },
 };
 ```
-#### Renorm
+#### Using Renorm
 ```javascript
 import { Schemas } from './schema';
 import renorm from 'renorm';
@@ -71,7 +71,7 @@ import renorm from 'renorm';
 const getCompanyIds = (state) => state.companyIds;
 const getCompanies = renorm(getCompanyIds, Schemas.COMPANY_ARRAY);
 ```
-#### Without Renorm
+#### Without Using Renorm
 ```javascript
 import { Schemas } from './schema';
 import { denormalize } from 'normalizr';
