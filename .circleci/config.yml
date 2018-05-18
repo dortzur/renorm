@@ -2,6 +2,19 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
+
+dependencies:
+  post:
+    - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+    - chmod +x ./cc-test-reporter
+
+test:
+  pre:
+    - ./cc-test-reporter before-build
+
+  post:
+    - ./cc-test-reporter after-build --exit-code $EXIT_CODE
+
 version: 2
 jobs:
   build:
