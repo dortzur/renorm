@@ -23,16 +23,75 @@ npm install --save renorm
 ```
 
 ## Features
+
 * Discovers entities used in your selector automatically.
 * Significant performance boost when selecting a list of entities.
 * Easy, concise syntax.
- 
- 
+
 ## Examples
 
+### Basic Example
+
+**basic-schema.js**
+
+```javascript
+import { schema } from 'normalizr';
+const stockSchema = new schema.Entity('stocks');
+const companySchema = new schema.Entity('companies', {
+  stock: stockSchema,
+});
+export const Schemas = {
+  STOCK: stockSchema,
+  STOCK_ARRAY: [stockSchema],
+  COMPANY: companySchema,
+  COMPANY_ARRAY: [companySchema],
+};
+```
+
+**basic-state.js**
+
+```javascript
+const state = {
+  company_ids: ['COMP_A', 'COMP_B' /*...*/],
+  entities: {
+    companies: {
+      /*company entities...*/
+    },
+  },
+  stocks: {
+    /*stock entities...*/
+  },
+};
+```
+
+```javascript
+import { Schemas } from './schema';
+import { denormalize } from 'normalizr';
+import { createSelector } from 'reselect';
+import renorm from 'renorm';
+const getStockList = (state) => state.stocks;
+const getCompanyEntities = (state) => state.entities.companies;
+const getStockEntities = (state) => state.entities.stocks;
+
+// without renorm
+export const getCompanies = createSelector(
+  getStockList,
+  getCompanyEntities,
+  getStockEntities,
+  (stockList, companies, stocks) =>
+    denormalize(stockList, Schemas.COMPANY_ARRAY, {
+      companies,
+      stocks,
+    })
+);
+
+//with renorm
+const getCompanies = renorm(getStockList, Schemas.COMPANY_ARRAY);
+```
+
+## Options
 
 ## Benchmarks
-
 
 ## Dependencies
 
