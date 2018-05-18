@@ -23,13 +23,23 @@ npm install --save renorm
 ```
 
 ## Features
-
+* Discovers entities used in your selector automatically.
+* Significant performance boost when selecting a list of entities.
+* Easy, concise syntax.
+ 
+ 
 ## Examples
+
+
+## Benchmarks
+
 
 ## Dependencies
 
 * [Reselect](https://github.com/reduxjs/reselect/)
 * [Normalizr](https://github.com/paularmstrong/normalizr)
+
+Renorm doesn't bundle these these dependencies on purpose. You'll want to install them separately.
 
 ## License
 
