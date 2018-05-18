@@ -71,7 +71,7 @@ import renorm from 'renorm';
 const getCompanyIds = (state) => state.companyIds;
 const getCompanies = renorm(getCompanyIds, Schemas.COMPANY_ARRAY);
 ```
-#### Without Using Renorm
+And here's the same selector without using renorm:
 ```javascript
 import { Schemas } from './schema';
 import { denormalize } from 'normalizr';
