@@ -31,6 +31,7 @@ npm install --save renorm
 ## Examples
 
 ### Basic Usage
+
 ```javascript
 // schema
 import { schema } from 'normalizr';
@@ -58,15 +59,14 @@ const state = {
   },
 };
 
-
-// renorm selector 
+//renorm selector
 import renorm from 'renorm';
 const getCompanyIds = (state) => state.companyIds;
 const getCompanies = renorm(getCompanyIds, Schemas.COMPANY_ARRAY);
 
 //and here's the same selector without renorm
-import {denormalize} from 'normalizr';
-import {createSelector} from 'reselect';
+import { denormalize } from 'normalizr';
+import { createSelector } from 'reselect';
 const getCompanyIds = (state) => state.companyIds;
 const getCompanyEntities = (state) => state.entities.companies;
 const getStockEntities = (state) => state.entities.stocks;
