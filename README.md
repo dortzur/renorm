@@ -26,11 +26,11 @@ npm install --save renorm
 
 * Discovers entities used in your selector automatically.
 * Significant performance boost when selecting a list of entities.
-* Easy, concise syntax.
+* Developer friendly syntax.
 
 ## Examples
 
-### Basic Example
+### Example
 
 **basic-schema.js**
 
@@ -63,17 +63,23 @@ const state = {
   },
 };
 ```
+#### Renorm
+```javascript
+import { Schemas } from './schema';
+import renorm from 'renorm';
 
+const getStockList = (state) => state.stocks;
+const getCompanies = renorm(getStockList, Schemas.COMPANY_ARRAY);
+```
+#### Without Renorm
 ```javascript
 import { Schemas } from './schema';
 import { denormalize } from 'normalizr';
 import { createSelector } from 'reselect';
-import renorm from 'renorm';
+
 const getStockList = (state) => state.stocks;
 const getCompanyEntities = (state) => state.entities.companies;
 const getStockEntities = (state) => state.entities.stocks;
-
-// without renorm
 export const getCompanies = createSelector(
   getStockList,
   getCompanyEntities,
@@ -84,9 +90,6 @@ export const getCompanies = createSelector(
       stocks,
     })
 );
-
-//with renorm
-const getCompanies = renorm(getStockList, Schemas.COMPANY_ARRAY);
 ```
 
 ## Options
