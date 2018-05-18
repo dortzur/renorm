@@ -52,7 +52,7 @@ export const Schemas = {
 
 ```javascript
 const state = {
-  company_ids: ['COMP_A', 'COMP_B' /*...*/],
+  companyIds: ['COMP_A', 'COMP_B' /*...*/],
   entities: {
     companies: {
       /*company entities...*/
@@ -68,8 +68,8 @@ const state = {
 import { Schemas } from './schema';
 import renorm from 'renorm';
 
-const getStockList = (state) => state.stocks;
-const getCompanies = renorm(getStockList, Schemas.COMPANY_ARRAY);
+const getCompanyIds = (state) => state.companyIds;
+const getCompanies = renorm(getCompanyIds, Schemas.COMPANY_ARRAY);
 ```
 #### Without Renorm
 ```javascript
@@ -77,11 +77,11 @@ import { Schemas } from './schema';
 import { denormalize } from 'normalizr';
 import { createSelector } from 'reselect';
 
-const getStockList = (state) => state.stocks;
+const getCompanyIds = (state) => state.companyIds;
 const getCompanyEntities = (state) => state.entities.companies;
 const getStockEntities = (state) => state.entities.stocks;
 export const getCompanies = createSelector(
-  getStockList,
+  getCompanyIds,
   getCompanyEntities,
   getStockEntities,
   (stockList, companies, stocks) =>
