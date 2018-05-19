@@ -61,6 +61,7 @@ describe('utils', () => {
     expect(dotProp('a.b.c.d.e', obj)).toBeUndefined();
     expect(dotProp('q', obj)).toBeUndefined();
     expect(dotProp('a.b.c.q', obj)).toBeUndefined();
+    expect(dotProp('a.b.c.q')).toBeUndefined();
   });
   it('gets entity names', () => {
     expect(getEntityNames(Schemas.COMPANY)).toEqual([
