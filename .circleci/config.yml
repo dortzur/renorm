@@ -4,8 +4,6 @@ jobs:
     docker:
       - image: circleci/node:9.11.1
     working_directory: ~/repo
-    environment:
-      CC_TEST_REPORTER_ID: $CC_TEST_REPORTER_ID
     steps:
       - checkout
       - restore_cache:
@@ -28,7 +26,7 @@ jobs:
           command: |
             ./cc-test-reporter before-build
             npm run test:ci
-            ./cc-test-reporter after-build --coverage-input-type clover --exit-code $?
+            ./cc-test-reporter after-build --coverage-input-type lcov -o coverage/lcov-report --exit-code $?
           environment:
             JEST_JUNIT_OUTPUT: "test-results/jest/results.xml"
       - store_test_results:
