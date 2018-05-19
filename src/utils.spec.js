@@ -50,4 +50,17 @@ describe('utils', () => {
     const newEntities = (state.entities.stocks = { ...state.entities.stocks });
     expect(areEntitiesEqual(state.entities, newEntities)).toBeFalsy();
   });
+  it('filters unique values', () => {
+    const arr = ['A', 'B', 'C', 'A', 'C', 'D', 'D', 'B', 'C'];
+    expect(arr.filter(uniqueFilter)).toEqual(['A', 'B', 'C', 'D']);
+  });
+  it('gets deep properties safely', () => {
+    const obj = { a: { b: { c: { d: 'prop' } } } };
+    expect(dotProp('a.b.c', obj)).toEqual({ d: 'prop' });
+    expect(dotProp('a.b.c.d', obj)).toEqual('prop');
+    expect(dotProp('a.b.c.d.e', obj)).toBeUndefined();
+    expect(dotProp('q', obj)).toBeUndefined();
+    expect(dotProp('a.b.c.q', obj)).toBeUndefined();
+  });
+
 });
