@@ -1,7 +1,14 @@
 version: 2
 
-
-
+test:
+  dependencies:
+    post:
+        - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+        - chmod +x ./cc-test-reporter
+  pre:
+    - ./cc-test-reporter before-build
+  post:
+    - ./cc-test-reporter after-build --exit-code $EXIT_CODE
 
 jobs:
   build:
@@ -10,14 +17,6 @@ jobs:
     working_directory: ~/repo
     environment:
       CC_TEST_REPORTER_ID: $CC_TEST_REPORTER_ID
-    dependencies:
-      post:
-        - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-        - chmod +x ./cc-test-reporter
-    pre:
-      - ./cc-test-reporter before-build
-    post:
-      - ./cc-test-reporter after-build --exit-code $EXIT_CODE
     steps:
       - checkout
       - restore_cache:
