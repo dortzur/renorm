@@ -46,9 +46,10 @@ export const Schemas = {
   COMPANY_ARRAY: [companySchema],
 };
 
-// redux state example
+// redux state
 const state = {
-  companyIds: ['COMP_A', 'COMP_B' /*...*/],
+  companyIds: ['COMP_A', 'COMP_B', 'COMP_C' /*...*/],
+
   entities: {
     companies: {
       /*company entities...*/
@@ -64,7 +65,9 @@ import renorm from 'renorm';
 const getCompanyIds = (state) => state.companyIds;
 const getCompanies = renorm(getCompanyIds, Schemas.COMPANY_ARRAY);
 ```
+
 For comparison, here's the same selector without using renorm:
+
 ```javascript
 import { denormalize } from 'normalizr';
 import { createSelector } from 'reselect';
@@ -83,9 +86,9 @@ export const getCompanies = createSelector(
 );
 ```
 
-## Options
+## Performance
 
-## Benchmarks
+## Options
 
 ## Dependencies
 
