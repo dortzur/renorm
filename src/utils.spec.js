@@ -62,5 +62,12 @@ describe('utils', () => {
     expect(dotProp('q', obj)).toBeUndefined();
     expect(dotProp('a.b.c.q', obj)).toBeUndefined();
   });
-
+  it('gets entity names', () => {
+    expect(getEntityNames(Schemas.COMPANY)).toEqual([
+      'companies',
+      'stocks',
+      'earnings',
+    ]);
+    expect(getEntityNames(Schemas.STOCK_ARRAY)).toEqual(['stocks', 'earnings']);
+  });
 });
