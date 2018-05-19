@@ -1,6 +1,6 @@
 version: 2
 
-test:
+machine:
   dependencies:
     post:
         - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
