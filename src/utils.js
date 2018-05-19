@@ -1,8 +1,3 @@
-const baba=()=>{
-  const a = 12;
-  return a;
-
-}
 /**
  * @param a {*}
  * @param b {*}
