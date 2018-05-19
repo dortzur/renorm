@@ -1,6 +1,6 @@
 {
   "name": "renorm",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "Avoid React avoidable re-renders with Redux, Reselect and Normalizr using an optimisied selector.",
   "main": "lib/index.js",
   "scripts": {
@@ -53,7 +53,10 @@
   "bugs": "https://github.com/dortzur/renorm/issues",
   "jest": {
     "testRegex": "(.spec.js)$",
-    "coverageReporters":["text-lcov","lcov"]
+    "coverageReporters": [
+      "text-lcov",
+      "lcov"
+    ]
   },
   "sideEffects": false,
   "dependencies": {
