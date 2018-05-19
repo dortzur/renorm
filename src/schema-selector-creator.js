@@ -58,28 +58,6 @@ const didEntitiesChange = (id, rootSchema, entities, lastEntities) => {
     );
   }, false);
 };
-/**
- *
- * @param input {Array}
- * @param rootSchema {schema.Entity}
- * @param entities {Object}
- * @param newResultEntityMap {Object}
- * @param Cache {Object}
- * @return {Array}
- */
-const getOptimizedResult = (
-  input,
-  rootSchema,
-  entities,
-  newResultEntityMap,
-  Cache
-) =>
-  input.map(
-    (id) =>
-      didEntitiesChange(id, rootSchema, entities, Cache.lastEntities)
-        ? newResultEntityMap[id]
-        : Cache.lastResultEntityMap[id]
-  );
 
 const initCache = () => ({
   lastArgs: null,
@@ -110,12 +88,11 @@ function entityMemoize(func, schema) {
         const newResultEntityMap = toEntity(newResult);
         const rootSchema = Array.isArray(schema) ? schema[0] : schema;
 
-        Cache.lastResult = getOptimizedResult(
-          input,
-          rootSchema,
-          entities,
-          newResultEntityMap,
-          Cache
+        Cache.lastResult = input.map(
+          (id) =>
+            didEntitiesChange(id, rootSchema, entities, Cache.lastEntities)
+              ? newResultEntityMap[id]
+              : Cache.lastResultEntityMap[id]
         );
       } else {
         Cache.lastResult = newResult;
