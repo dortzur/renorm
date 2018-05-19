@@ -81,6 +81,13 @@ const getOptimizedResult = (
         : Cache.lastResultEntityMap[id]
   );
 
+const initCache = () => ({
+  lastArgs: null,
+  lastEntities: null,
+  lastResult: null,
+  lastResultEntityMap: null,
+});
+
 /**
  *
  * @param func {function}
@@ -88,27 +95,21 @@ const getOptimizedResult = (
  * @return {function}
  */
 function entityMemoize(func, schema) {
-  const Cache = {
-    lastArgs: null,
-    lastEntities: null,
-    lastResult: null,
-    newResult: null,
-    lastResultEntityMap: null,
-  };
-
-  const rootSchema = Array.isArray(schema) ? schema[0] : schema;
-
+  const Cache = initCache();
   // we reference arguments instead of spreading them for performance reasons
+
   return function() {
     if (!areArgumentsShallowlyEqual(equalityCheck, Cache.lastArgs, arguments)) {
       // apply arguments instead of spreading for performance.
       const [rawInput, entities] = arguments;
       const rawResult = func.apply(null, arguments);
-      Cache.newResult = Array.isArray(rawResult) ? rawResult : [rawResult];
-      const newResultEntityMap = toEntity(Cache.newResult);
+      const newResult = Array.isArray(rawResult) ? rawResult : [rawResult];
 
       const input = Array.isArray(rawInput) ? rawInput : [rawInput];
       if (Cache.lastResult) {
+        const newResultEntityMap = toEntity(newResult);
+        const rootSchema = Array.isArray(schema) ? schema[0] : schema;
+
         Cache.lastResult = getOptimizedResult(
           input,
           rootSchema,
@@ -117,7 +118,7 @@ function entityMemoize(func, schema) {
           Cache
         );
       } else {
-        Cache.lastResult = Cache.newResult;
+        Cache.lastResult = newResult;
       }
 
       Cache.lastResultEntityMap = toEntity(Cache.lastResult);
