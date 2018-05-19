@@ -26,7 +26,7 @@ jobs:
           command: |
             ./cc-test-reporter before-build
             npm run test:ci
-            ./cc-test-reporter after-build --coverage-input-type lcov -o coverage/lcov-report --exit-code $?
+            ./cc-test-reporter after-build --coverage-input-type lcov --o coverage/lcov-report --exit-code $?
           environment:
             JEST_JUNIT_OUTPUT: "test-results/jest/results.xml"
       - store_test_results:
