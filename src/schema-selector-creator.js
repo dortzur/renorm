@@ -58,6 +58,28 @@ const didEntitiesChange = (id, rootSchema, entities, lastEntities) => {
     );
   }, false);
 };
+/**
+ *
+ * @param input {Array}
+ * @param rootSchema {schema.Entity}
+ * @param entities {Object}
+ * @param newResultEntityMap {Object}
+ * @param Cache {Object}
+ * @return {Array}
+ */
+const getOptimizedResult = (
+  input,
+  rootSchema,
+  entities,
+  newResultEntityMap,
+  Cache
+) =>
+  input.map(
+    (id) =>
+      didEntitiesChange(id, rootSchema, entities, Cache.lastEntities)
+        ? newResultEntityMap[id]
+        : Cache.lastResultEntityMap[id]
+  );
 
 /**
  *
@@ -66,38 +88,43 @@ const didEntitiesChange = (id, rootSchema, entities, lastEntities) => {
  * @return {function}
  */
 function entityMemoize(func, schema) {
-  let lastArgs = null;
-  let lastEntities = null;
-  let lastResult = null;
-  let newResult = null;
-  let lastResultCache = {};
+  const Cache = {
+    lastArgs: null,
+    lastEntities: null,
+    lastResult: null,
+    newResult: null,
+    lastResultEntityMap: null,
+  };
+
   const rootSchema = Array.isArray(schema) ? schema[0] : schema;
 
   // we reference arguments instead of spreading them for performance reasons
   return function() {
-    if (!areArgumentsShallowlyEqual(equalityCheck, lastArgs, arguments)) {
+    if (!areArgumentsShallowlyEqual(equalityCheck, Cache.lastArgs, arguments)) {
       // apply arguments instead of spreading for performance.
-      const rawResult = func.apply(null, arguments);
-      newResult = Array.isArray(rawResult) ? rawResult : [rawResult];
-      const newResultCache = toEntity(newResult);
       const [rawInput, entities] = arguments;
+      const rawResult = func.apply(null, arguments);
+      Cache.newResult = Array.isArray(rawResult) ? rawResult : [rawResult];
+      const newResultEntityMap = toEntity(Cache.newResult);
+
       const input = Array.isArray(rawInput) ? rawInput : [rawInput];
-      if (lastResult) {
-        lastResult = input.map(
-          (id) =>
-            didEntitiesChange(id, rootSchema, entities, lastEntities)
-              ? newResultCache[id]
-              : lastResultCache[id]
+      if (Cache.lastResult) {
+        Cache.lastResult = getOptimizedResult(
+          input,
+          rootSchema,
+          entities,
+          newResultEntityMap,
+          Cache
         );
       } else {
-        lastResult = newResult;
+        Cache.lastResult = Cache.newResult;
       }
 
-      lastResultCache = toEntity(lastResult);
-      lastArgs = arguments;
-      lastEntities = entities;
+      Cache.lastResultEntityMap = toEntity(Cache.lastResult);
+      Cache.lastArgs = arguments;
+      Cache.lastEntities = entities;
     }
-    return Array.isArray(schema) ? lastResult : lastResult[0];
+    return Array.isArray(schema) ? Cache.lastResult : Cache.lastResult[0];
   };
 }
 
