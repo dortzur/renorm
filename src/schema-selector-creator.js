@@ -38,7 +38,30 @@ const getAffectedEntities = (id, schema, entities, affectedEntities = []) => {
 
 /**
  *
- * @param func
+ * @param id {*}
+ * @param rootSchema {schema.Entity}
+ * @param entities {Object}
+ * @param lastEntities {Object}
+ * @return {boolean}
+ */
+const didEntitiesChange = (id, rootSchema, entities, lastEntities) => {
+  const affected = getAffectedEntities(id, rootSchema, entities);
+  return affected.reduce((didChange, entityObj) => {
+    if (didChange) return didChange;
+    return (
+      entities[entityObj.schema.key][
+        entityObj.entity[entityObj.schema.idAttribute]
+      ] !==
+      lastEntities[entityObj.schema.key][
+        entityObj.entity[entityObj.schema.idAttribute]
+      ]
+    );
+  }, false);
+};
+
+/**
+ *
+ * @param func {function}
  * @param schema {schema.Entity}
  * @return {function}
  */
@@ -60,21 +83,12 @@ function entityMemoize(func, schema) {
       const [rawInput, entities] = arguments;
       const input = Array.isArray(rawInput) ? rawInput : [rawInput];
       if (lastResult) {
-        lastResult = input.map((id) => {
-          const affected = getAffectedEntities(id, rootSchema, entities);
-          const didChange = affected.reduce((didChange, entityObj) => {
-            if (didChange) return didChange;
-            return (
-              entities[entityObj.schema.key][
-                entityObj.entity[entityObj.schema.idAttribute]
-              ] !==
-              lastEntities[entityObj.schema.key][
-                entityObj.entity[entityObj.schema.idAttribute]
-              ]
-            );
-          }, false);
-          return didChange ? newResultCache[id] : lastResultCache[id];
-        });
+        lastResult = input.map(
+          (id) =>
+            didEntitiesChange(id, rootSchema, entities, lastEntities)
+              ? newResultCache[id]
+              : lastResultCache[id]
+        );
       } else {
         lastResult = newResult;
       }
