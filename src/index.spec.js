@@ -113,4 +113,29 @@ describe('renorm', () => {
       })
     );
   });
+  it('uses a different reducer path', () => {
+    const getAppleStock = renorm(() => 'AAPL', Schemas.STOCK, {
+      entitiesPath: 'custom.customEntities',
+    });
+    const customState = {
+      ...state,
+      entities: null,
+      custom: { customEntities: state.entities },
+    };
+    const appleStock = getAppleStock(customState);
+
+    expect(appleStock).toMatchSnapshot();
+    expect(appleStock).toEqual(
+      expect.objectContaining({
+        change: -7.08,
+        field4: '',
+        id: 'AAPL',
+        lastEarningsReport: {
+          earnings: 77598,
+          quarter: 3,
+          reportId: 'AAPL_QUARTER_3',
+        },
+      })
+    );
+  });
 });

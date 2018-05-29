@@ -216,6 +216,39 @@ Object {
 }
 `;
 
+exports[`renorm uses a different reducer path 1`] = `
+Object {
+  "change": -7.08,
+  "field4": "",
+  "id": "AAPL",
+  "lastEarningsReport": Object {
+    "earnings": 77598,
+    "quarter": 3,
+    "reportId": "AAPL_QUARTER_3",
+  },
+  "name": "Apple Inc",
+  "percentChange": "-4.10%",
+  "price": 734,
+  "quarterEarnings": Array [
+    Object {
+      "earnings": 91507,
+      "quarter": 1,
+      "reportId": "AAPL_QUARTER_1",
+    },
+    Object {
+      "earnings": 69667,
+      "quarter": 2,
+      "reportId": "AAPL_QUARTER_2",
+    },
+    Object {
+      "earnings": 77598,
+      "quarter": 3,
+      "reportId": "AAPL_QUARTER_3",
+    },
+  ],
+}
+`;
+
 exports[`renorm uses a process function 1`] = `
 Object {
   "company_name": "Apple Inc.",
