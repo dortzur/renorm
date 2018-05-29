@@ -80,5 +80,3 @@ export const getEntityNames = (schema, schemaEntities = []) => {
 
 export const dotProp = (path, obj) =>
   path.split('.').reduce((prev, curr) => (prev ? prev[curr] : undefined), obj);
-
-export const uncoveredMethod = () => console.log('uncovered');
