@@ -14,7 +14,7 @@ const defaultOptions = {
  * @param options {{entitiesPath: string, process: function}}
  * @return {function}
  */
-const renorm = (inputSelector, schema, options = {}) => {
+const renorm = (inputSelector, schema, options = defaultOptions) => {
   const createEntitySelector = schemaSelectorCreator(schema);
   const entityNames = getEntityNames(schema);
   options = Object.assign({}, defaultOptions, options);

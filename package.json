@@ -1,7 +1,8 @@
 {
   "name": "renorm",
   "version": "0.3.8",
-  "description": "Avoid React avoidable re-renders with Redux, Reselect and Normalizr using an optimisied selector.",
+  "description":
+    "Avoid React avoidable re-renders with Redux, Reselect and Normalizr using an optimisied selector.",
   "main": "lib/index.js",
   "scripts": {
     "build": "webpack",
@@ -13,16 +14,11 @@
     "test": "cross-env BABEL_ENV=commonjs jest",
     "test:watch": "npm test -- --watch",
     "test:cov": "npm test -- --coverage",
-    "test:ci": "jest --coverage --ci --testResultsProcessor=jest-junit | coveralls",
+    "test:ci":
+      "jest --coverage --ci --testResultsProcessor=jest-junit | coveralls",
     "clean": "rimraf lib dist es coverage"
   },
-  "files": [
-    "dist",
-    "lib",
-    "es",
-    "src",
-    "index.d.ts"
-  ],
+  "files": ["dist", "lib", "es", "src", "index.d.ts"],
   "keywords": [
     "normalizr",
     "reselect",
@@ -36,6 +32,7 @@
   "author": "Dor Tzur",
   "license": "MIT",
   "devDependencies": {
+    "humps": "^2.0.1",
     "babel-core": "^6.26.3",
     "babel-jest": "^22.4.3",
     "babel-loader": "^7.1.0",
@@ -53,10 +50,7 @@
   "bugs": "https://github.com/dortzur/renorm/issues",
   "jest": {
     "testRegex": "(.spec.js)$",
-    "coverageReporters": [
-      "text-lcov",
-      "lcov"
-    ]
+    "coverageReporters": ["text-lcov", "lcov"]
   },
   "sideEffects": false,
   "dependencies": {

@@ -3,7 +3,7 @@ import { normalize } from 'normalizr';
 import stockFixture from '../fixtures/stock-fixure';
 import { Schemas } from '../fixtures/schema-fixture';
 import produce from 'immer';
-
+import { decamelizeKeys } from 'humps';
 const getStocks = (state) => state.stocks;
 
 let state = null;
@@ -77,8 +77,40 @@ describe('renorm', () => {
     getAppleStock(newState);
     expect(getAppleStock.recomputations()).toEqual(2);
   });
-  // it('uses custom options',()=>{
-  //   const getStocksSelector = renorm(getStocks, Schemas.COMPANY_ARRAY,{});
-  //
-  // })
+
+  it('uses a process function', () => {
+    const getStocksSelector = renorm(getStocks, Schemas.COMPANY_ARRAY, {
+      process: (result) => decamelizeKeys(result),
+    });
+    const result = getStocksSelector(state);
+    expect(result[1]).toEqual(
+      expect.objectContaining({
+        company_name: 'Apple Inc.',
+        financial_status: 'N',
+        id: 'COMP_AAPL',
+        market_category: 'Q',
+        round_lot_size: 100,
+        security_name: 'Apple Inc. - Common Stock',
+      })
+    );
+    expect(result[1]).toMatchSnapshot();
+
+    const getAppleStock = renorm(() => 'AAPL', Schemas.STOCK, {
+      process: (result) => decamelizeKeys(result),
+    });
+    const appleStock = getAppleStock(state);
+    expect(appleStock).toMatchSnapshot();
+    expect(appleStock).toEqual(
+      expect.objectContaining({
+        change: -7.08,
+        field4: '',
+        id: 'AAPL',
+        last_earnings_report: {
+          earnings: 77598,
+          quarter: 3,
+          report_id: 'AAPL_QUARTER_3',
+        },
+      })
+    );
+  });
 });

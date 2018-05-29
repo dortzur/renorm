@@ -215,3 +215,78 @@ Object {
   "testIssue": "N",
 }
 `;
+
+exports[`renorm uses a process function 1`] = `
+Object {
+  "company_name": "Apple Inc.",
+  "financial_status": "N",
+  "id": "COMP_AAPL",
+  "market_category": "Q",
+  "round_lot_size": 100,
+  "security_name": "Apple Inc. - Common Stock",
+  "stock": Object {
+    "change": -7.08,
+    "field4": "",
+    "id": "AAPL",
+    "last_earnings_report": Object {
+      "earnings": 77598,
+      "quarter": 3,
+      "report_id": "AAPL_QUARTER_3",
+    },
+    "name": "Apple Inc",
+    "percent_change": "-4.10%",
+    "price": 734,
+    "quarter_earnings": Array [
+      Object {
+        "earnings": 91507,
+        "quarter": 1,
+        "report_id": "AAPL_QUARTER_1",
+      },
+      Object {
+        "earnings": 69667,
+        "quarter": 2,
+        "report_id": "AAPL_QUARTER_2",
+      },
+      Object {
+        "earnings": 77598,
+        "quarter": 3,
+        "report_id": "AAPL_QUARTER_3",
+      },
+    ],
+  },
+  "test_issue": "N",
+}
+`;
+
+exports[`renorm uses a process function 2`] = `
+Object {
+  "change": -7.08,
+  "field4": "",
+  "id": "AAPL",
+  "last_earnings_report": Object {
+    "earnings": 77598,
+    "quarter": 3,
+    "report_id": "AAPL_QUARTER_3",
+  },
+  "name": "Apple Inc",
+  "percent_change": "-4.10%",
+  "price": 734,
+  "quarter_earnings": Array [
+    Object {
+      "earnings": 91507,
+      "quarter": 1,
+      "report_id": "AAPL_QUARTER_1",
+    },
+    Object {
+      "earnings": 69667,
+      "quarter": 2,
+      "report_id": "AAPL_QUARTER_2",
+    },
+    Object {
+      "earnings": 77598,
+      "quarter": 3,
+      "report_id": "AAPL_QUARTER_3",
+    },
+  ],
+}
+`;
