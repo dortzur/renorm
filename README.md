@@ -28,6 +28,21 @@ npm install --save renorm
 * Significant performance boost when selecting a list of entities.
 * Developer friendly syntax.
 
+## How Does it Work
+
+`renorm(inputSelector, schema)`
+When you create a renorm selector this is what happens:
+
+1.  A new reselect [selectorCreator](https://github.com/reduxjs/reselect#createselectorcreatormemoize-memoizeoptions)
+    is created with the schema you provided. 
+    Renorm uses a customized version of Reselect's `defaultMemoize` optimized for normalizr entities.
+2.  Renorm traverses the schema you provided and saves all unique entities found.
+3.  Renorm creates an entities selector with only the relevant schema entities
+4.  Renorm now uses the Reselect selector creator from #1 which uses input, schema and relevant entities to invoke Normalizr's `denormalize` method. 
+    This is the return value when invoking `renorm`  
+
+### Memoization Strategy
+    
 ## Examples
 
 ### Basic Usage
@@ -94,8 +109,6 @@ export const getCompanies = createSelector(
 
 * [Reselect](https://github.com/reduxjs/reselect/)
 * [Normalizr](https://github.com/paularmstrong/normalizr)
-
-Renorm doesn't bundle these these dependencies on purpose. You'll want to install them separately.
 
 ## License
 

@@ -11,7 +11,7 @@ const defaultOptions = {
  *
  * @param inputSelector {function}
  * @param schema {schema.Entity}
- * @param options {{entitiesPath: string, process: function}}
+ * @param options {{[entitiesPath]: string, [process]: function}}
  * @return {function}
  */
 const renorm = (inputSelector, schema, options = defaultOptions) => {
