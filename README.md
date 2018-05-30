@@ -12,6 +12,10 @@ Meaning A deep comparison of all of the object's primitives would find them iden
 This causes a React component to run it's render
 method needlessly, since the render result would be identical to the last one.
 
+## Solution
+
+## Documentation
+
 ## Installation
 
 ```shell
@@ -34,15 +38,37 @@ npm install --save renorm
 When you create a renorm selector this is what happens:
 
 1.  A new reselect [selectorCreator](https://github.com/reduxjs/reselect#createselectorcreatormemoize-memoizeoptions)
-    is created with the schema you provided. 
-    Renorm uses a customized version of Reselect's `defaultMemoize` optimized for normalizr entities.
+    is created with the schema you provided.
+    Renorm uses a [customized version](#memoization-strategy) of Reselect's `defaultMemoize` optimized for normalizr entities.
 2.  Renorm traverses the schema you provided and saves all unique entities found.
 3.  Renorm creates an entities selector with only the relevant schema entities
-4.  Renorm now uses the Reselect selector creator from #1 which uses input, schema and relevant entities to invoke Normalizr's `denormalize` method. 
-    This is the return value when invoking `renorm`  
+4.  Renorm now uses the Reselect selector creator from #1 which uses input, schema and relevant entities to invoke Normalizr's `denormalize` method.
+    This is the return value when invoking `renorm`
 
 ### Memoization Strategy
-    
+
+Renorm has a two phase memoization strategy
+
+#### Basic Memoization. Based on Reselect's existing `defaultMemoize`
+
+1.  Check arguments length and null check
+2.  Shallow equality of of the input ids and each one of the relevant entity maps (stocks, companies, etc.)
+    if all the checks return true the memoized version is returned, otherwise the function is invoked.
+    This the exact same process Reselect already does by default.
+
+if the function is invoked Renorm switches to advanced memoization
+
+#### Advanced Memoization
+
+For each the denormalized object, check all underlying entities:
+
+1.  If all underlying entities are shallowly equal to the previous ones, return previous denormalized object.
+2.  Else return the denormalized object
+3.  Cache results for next run
+
+The big advantage here is that only newly returned objects will trigger React's render.
+Without Renorm's advanced memoization every item on the list would trigger React's render, even if you only a single entity was changed!
+
 ## Examples
 
 ### Basic Usage
@@ -104,6 +130,12 @@ export const getCompanies = createSelector(
 ## Performance
 
 ## Options
+
+Renorm's third parameter is an optional options object that contains the following props:
+| Name | Type | Default Value | Description |
+| ------------- | ------------- | ----------- | ------------- |
+| entitiesPath | string | "entities" | path to the entities object in the state |
+| process | function | (result) => result | a function to perform mutation operations before results are returned |
 
 ## Dependencies
 
