@@ -133,7 +133,7 @@ export const getCompanies = createSelector(
 
 Renorm's third parameter is an optional options object that contains the following props:
 | Name | Type | Default Value | Description |
-| ------------- | ------------- | ----------- | ------------- |
+| --- | --- | --- | --- |
 | entitiesPath | string | "entities" | path to the entities object in the state |
 | process | function | (result) => result | a function to perform mutation operations before results are returned |
 
