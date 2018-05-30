@@ -4,6 +4,24 @@ A state selector to optimize the usage of React, Redux, Reselect & Normalizr.
 
 [![CircleCI Status](https://circleci.com/gh/dortzur/renorm.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/dortzur/renorm) [![Coverage Status](https://img.shields.io/coveralls/dortzur/renorm.svg?style=flat)](https://coveralls.io/github/dortzur/renorm?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/98cfe3ff1fc90e570820/maintainability)](https://codeclimate.com/github/dortzur/renorm/maintainability) [![minzipped size](https://img.shields.io/bundlephobia/minzip/renorm.svg?colorB=44cc11&style=square)](https://bundlephobia.com/result?p=renorm) [![npm version](https://img.shields.io/npm/v/renorm.svg?style=flat-square)](https://www.npmjs.com/package/renorm) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/dortzur/renorm/blob/master/LICENSE)
 
+## Table of Contents
+
+* [Motivation](#motivation)
+* [Solution](#solution)
+* [Documentation](#documentation)
+* [Installation](#installation)
+* [Features](#features)
+* [How It Works](#how-it-works)
+  * [Memoization Strategy](#memoization-strategy)
+    * [Basic Memoization. Based on Reselect's existing defaultMemoize](#basic-memoization-based-on-reselects-existing-defaultmemoize)
+    * [Advanced Memoization](#advanced-memoization)
+* [Examples](#examples)
+  * [Basic Usage](#basic-usage)
+* [Performance](#performance)
+* [Options](#options)
+* [Dependencies](#dependencies)
+* [License](#license)
+
 ## Motivation
 
 An avoidable re-render happens when a React component receives
