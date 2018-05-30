@@ -32,7 +32,7 @@ npm install --save renorm
 * Significant performance boost when selecting a list of entities.
 * Developer friendly syntax.
 
-## How Does it Work
+## How It Works
 
 `renorm(inputSelector, schema)`
 When you create a renorm selector this is what happens:
